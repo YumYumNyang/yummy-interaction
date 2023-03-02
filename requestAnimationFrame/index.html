@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Animation Frame Example</title>
+    <link rel="stylesheet" href="./style.css">
+    </link>
+    <script src="./anime.js"></script>
+    <script>
+        window.onload = () => {
+            const btn = document.querySelector('button');
+
+            btn.addEventListener('click', () => {
+                new Anime(window, { prop: 'scroll', value: 5000, duration: 1000, callback: () => new Anime(window, { prop: 'scroll', value: 0, duration: 1000 }) })
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <button>button</button>
+
+
+    <!-- <section>
+        <div id="box"></div>
+    </section> -->
+</body>
+
+</html>
+<!--
+    fps: frame per second(60fps)
+    hz: 화면주사율(60hz)
+    request animation frame: 화면주사율에 맞춰서 작업 가능
+
+    setInterval vs requestAnimationFrame
+    setInterval
+    - 작업자가 직접 반복횟수를 지정가능 
+    - 반복횟수가 많아질수록 오차범위가 쌓이면서 모션의 시간 정밀도가 떨어짐
+    - 붎필요한 리소스 낭비
+
+    requestAnimationFrame
+    - 시스템에 최적화된 화면 주사율에 맞게 반복횟수를 자동 조절
+    - 시스템 상황에 따라 모션작업
+    - 오차범위가 정밀하고 불필요한 리소스 낭비하지 않음
+-->
